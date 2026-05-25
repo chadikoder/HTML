@@ -5,46 +5,26 @@ let exFilter = "all";
 
 const W3_URLS = {
   "w3-intro": "https://www.w3schools.com/html/html_intro.asp",
-  "w3-syntax": "https://www.w3schools.com/html/html_syntax.asp",
-  "w3-variables": "https://www.w3schools.com/html/html_variables.asp",
-  "w3-echo": "https://www.w3schools.com/html/html_echo_print.asp",
-  "w3-types": "https://www.w3schools.com/html/html_datatypes.asp",
-  "w3-strings": "https://www.w3schools.com/html/html_string.asp",
-  "w3-numbers": "https://www.w3schools.com/html/html_numbers.asp",
-  "w3-constants": "https://www.w3schools.com/html/html_constants.asp",
-  "w3-operators": "https://www.w3schools.com/html/html_operators.asp",
-  "w3-if": "https://www.w3schools.com/html/html_if_else.asp",
-  "w3-loops": "https://www.w3schools.com/html/html_looping.asp",
-  "w3-functions-basic": "https://www.w3schools.com/html/html_functions.asp",
-  "w3-arrays-basic": "https://www.w3schools.com/html/html_arrays.asp",
-  "w3-superglobals": "https://www.w3schools.com/html/html_superglobals.asp",
+  "w3-elements": "https://www.w3schools.com/html/html_elements.asp",
+  "w3-attributes": "https://www.w3schools.com/html/html_attributes.asp",
+  "w3-headings": "https://www.w3schools.com/html/html_headings.asp",
+  "w3-paragraphs": "https://www.w3schools.com/html/html_paragraphs.asp",
+  "w3-styles": "https://www.w3schools.com/html/html_styles.asp",
+  "w3-links": "https://www.w3schools.com/html/html_links.asp",
   "w3-forms": "https://www.w3schools.com/html/html_forms.asp",
-  "w3-validation": "https://www.w3schools.com/html/html_form_validation.asp",
-  "w3-regex": "https://www.w3schools.com/html/html_regex.asp",
-  "w3-date": "https://www.w3schools.com/html/html_date.asp",
-  "w3-include": "https://www.w3schools.com/html/html_includes.asp",
-  "w3-file": "https://www.w3schools.com/html/html_file_open.asp",
-  "w3-upload": "https://www.w3schools.com/html/html_file_upload.asp",
-  "w3-cookies": "https://www.w3schools.com/html/html_cookies.asp",
-  "w3-sessions": "https://www.w3schools.com/html/html_sessions.asp",
-  "w3-json": "https://www.w3schools.com/html/html_json.asp",
-  "w3-oop": "https://www.w3schools.com/html/html_oop_what_is.asp",
-  "w3-constructor": "https://www.w3schools.com/html/html_oop_classes_objects.asp",
-  "w3-modifiers": "https://www.w3schools.com/html/html_oop_access_modifiers.asp",
-  "w3-inheritance": "https://www.w3schools.com/html/html_oop_inheritance.asp",
-  "w3-abstract": "https://www.w3schools.com/html/html_oop_classes_abstract.asp",
-  "w3-interfaces": "https://www.w3schools.com/html/html_oop_interfaces.asp",
-  "w3-static": "https://www.w3schools.com/html/html_oop_static_methods.asp",
-  "w3-exceptions": "https://www.w3schools.com/html/html_exception.asp",
-  "w3-mysql": "https://www.w3schools.com/html/html_mysql_intro.asp",
-  "w3-traits": "https://www.w3schools.com/html/html_oop_traits.asp",
-  "day-1": "https://www.w3schools.com/html/html_syntax.asp",
-  "day-2": "https://www.w3schools.com/html/html_functions.asp",
-  "day-3": "https://www.w3schools.com/html/html_form_validation.asp",
-  "day-4": "https://www.w3schools.com/html/html_sessions.asp",
-  "day-5": "https://www.w3schools.com/html/html_mysql_intro.asp",
-  "day-6": "https://www.w3schools.com/html/html_file_upload.asp",
-  "day-7": "https://www.w3schools.com/html/html_oop_what_is.asp",
+  "w3-input-types": "https://www.w3schools.com/html/html_form_input_types.asp",
+  "w3-tables": "https://www.w3schools.com/html/html_tables.asp",
+  "w3-iframes": "https://www.w3schools.com/html/html_iframe.asp",
+  "w3-semantic": "https://www.w3schools.com/html/html5_semantic_elements.asp",
+  "w3-aria": "https://www.w3schools.com/accessibility/accessibility_aria.php",
+  "w3-meta-seo": "https://www.w3schools.com/html/html_head.asp",
+  "day-1": "https://www.w3schools.com/html/html_basic.asp",
+  "day-2": "https://www.w3schools.com/html/html_formatting.asp",
+  "day-3": "https://www.w3schools.com/html/html_images.asp",
+  "day-4": "https://www.w3schools.com/html/html_tables.asp",
+  "day-5": "https://www.w3schools.com/html/html_forms.asp",
+  "day-6": "https://www.w3schools.com/html/html5_semantic_elements.asp",
+  "day-7": "https://www.w3schools.com/accessibility/accessibility_aria.php"
 };
 
 function loadState() {
@@ -75,14 +55,16 @@ function highlightPhp(code) {
     stash.push(`<span class="${cls}">${text}</span>`);
     return `__SAWAHOLD${i}HOLD__`;
   };
-  s = s.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, m => hold("str", m));
-  s = s.replace(/(\/\/[^\n]*|\/\*[\s\S]*?\*\/|#[^\n]*)/g, m => hold("com", m));
-  s = s.replace(/\b(function|return|if|else|elseif|while|for|foreach|as|switch|case|default|break|continue|do|class|new|public|private|protected|static|const|use|namespace|require|require_once|include|include_once|echo|print|die|exit|true|false|null|self|parent|instanceof|extends|implements|interface|trait|try|catch|finally|throw|fn|match|declare|global|and|or|xor)\b/g, '<span class="kw">$1</span>');
-  s = s.replace(/(\$\w+)/g, '<span class="var">$1</span>');
-  s = s.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="num">$1</span>');
-  s = s.replace(/\b([a-z_][a-z0-9_]*)\s*\(/gi, '<span class="fn">$1</span>(');
-  s = s.replace(/(?:&lt;\?php|\?&gt;)/g, '<span class="kw">$&</span>');
-  s = s.replace(/(-&gt;|=&gt;|::)/g, '<span class="op">$&</span>');
+  // HTML comments
+  s = s.replace(/&lt;!--[\s\S]*?--&gt;/g, m => hold("com", m));
+  // Doctype
+  s = s.replace(/&lt;!DOCTYPE[^&]*&gt;/gi, m => hold("kw", m));
+  // Strings in attributes
+  s = s.replace(/("(?:[^"\]|\.)*"|'(?:[^'\]|\.)*')/g, m => hold("str", m));
+  // Tag names: <tag or </tag
+  s = s.replace(/(&lt;\/?)([a-zA-Z][a-zA-Z0-9-]*)/g, '$1<span class="kw">$2</span>');
+  // Attribute names (before =)
+  s = s.replace(/([a-zA-Z-]+)(=)/g, '<span class="fn">$1</span>$2');
   return s.replace(/__SAWAHOLD(\d+)HOLD__/g, (_, i) => stash[+i] ?? "");
 }
 
