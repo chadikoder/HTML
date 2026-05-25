@@ -60,7 +60,7 @@ function highlightPhp(code) {
   // Doctype
   s = s.replace(/&lt;!DOCTYPE[^&]*&gt;/gi, m => hold("kw", m));
   // Strings in attributes
-  s = s.replace(/("(?:[^"\]|\.)*"|'(?:[^'\]|\.)*')/g, m => hold("str", m));
+  s = s.replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g, m => hold("str", m));
   // Tag names: <tag or </tag
   s = s.replace(/(&lt;\/?)([a-zA-Z][a-zA-Z0-9-]*)/g, '$1<span class="kw">$2</span>');
   // Attribute names (before =)
