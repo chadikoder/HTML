@@ -737,6 +737,145 @@ const GIO = [
     ]}],
     quiz:[{q:"Pour que SVG suive la couleur CSS :",opts:["<code>auto</code>","<code>inherit</code>","<code>currentColor</code>","<code>parent</code>"],correct:"c",
       expl:"<code>currentColor</code> = couleur du parent."}]
+  },
+  {id:"w3-classes",code:"B8",level:"basic",title:"HTML Classes",sub:"L'attribut class et le CSS",tags:["class","basics"],
+    sections:[{h:"Class : grouper des elements",blocks:[
+      {p:"<code>class</code> applique une etiquette qu'on peut ensuite cibler en CSS et JS. Plusieurs classes separees par des espaces."},
+      {code:"<div class=\"card big rouge\">Un</div>\n<div class=\"card big\">Deux</div>\n<div class=\"card\">Trois</div>\n\n<!-- En CSS -->\n<style>\n.card { padding: 16px; border: 1px solid #ccc; }\n.big { font-size: 20px; }\n.rouge { color: red; }\n</style>"},
+      {tip:"Pas d'espace dans le NOM d'une classe. <code>class=\"card big\"</code> = 2 classes. <code>class=\"card-big\"</code> = 1 classe."}
+    ]}],
+    quiz:[{q:"<code>class=\"card big\"</code> :",opts:["1 classe","2 classes","Erreur","Class avec espace"],correct:"b",
+      expl:"L'espace separe les classes."}]
+  },
+  {id:"w3-id",code:"B9",level:"basic",title:"HTML id",sub:"Identifiant unique",tags:["id","basics"],
+    sections:[{h:"id : unique par page",blocks:[
+      {p:"<code>id</code> identifie UN element unique. Sert d'ancre URL (#id), de cible pour <code>label[for]</code>, et de selecteur CSS/JS."},
+      {code:"<h2 id=\"section-contact\">Contact</h2>\n\n<a href=\"#section-contact\">Aller au contact</a>\n\n<label for=\"email\">Email</label>\n<input id=\"email\" type=\"email\">\n\n<script>\nconst el = document.getElementById('section-contact');\n</script>"},
+      {warn:"id doit etre UNIQUE par page. Sinon comportement imprevisible. Pour partager : utilise <code>class</code>."}
+    ]}],
+    quiz:[{q:"Combien d'<code>id=\"x\"</code> par page ?",opts:["1","Plusieurs","Illimite","Au moins 2"],correct:"a",
+      expl:"Un id doit etre unique."}]
+  },
+  {id:"w3-block-inline",code:"B10",level:"basic",title:"HTML Block vs Inline",sub:"Comprendre le flux",tags:["block","inline","basics"],
+    sections:[{h:"Difference",blocks:[
+      {table:[
+        ["Block","Inline"],
+        ["div, p, h1-h6","span, a, strong"],
+        ["section, article","img, code, kbd"],
+        ["form, ul, ol, li","label, input, time"],
+        ["Prend toute la largeur","Juste la place du contenu"],
+        ["Va a la ligne","Reste sur la meme ligne"],
+        ["width/height OK","width/height ignores (sauf img)"]
+      ]},
+      {code:"<!-- Block : chacun sur sa ligne -->\n<p>Un</p>\n<p>Deux</p>\n\n<!-- Inline : sur la meme ligne -->\n<span>Mot</span><span>colle</span><span>!</span>"}
+    ]}],
+    quiz:[{q:"<code>&lt;p&gt;</code> est :",opts:["Block","Inline","Flex","Aucun"],correct:"a",
+      expl:"p est block par defaut."}]
+  },
+  {id:"w3-file-paths",code:"B11",level:"basic",title:"HTML File Paths",sub:"Chemins relatifs vs absolus",tags:["paths","basics"],
+    sections:[{h:"Types de chemins",blocks:[
+      {table:[
+        ["Chemin","Sens"],
+        ["<code>img.jpg</code>","Meme dossier"],
+        ["<code>/img/logo.jpg</code>","Racine du site"],
+        ["<code>../img.jpg</code>","Dossier parent"],
+        ["<code>./img.jpg</code>","Dossier courant (explicite)"],
+        ["<code>https://site.fr/img.jpg</code>","Absolu / externe"]
+      ]},
+      {tip:"Toujours preferer les chemins absolus (commencent par <code>/</code>) pour les ressources principales : evite les bugs quand tu reorganises les dossiers."}
+    ]}],
+    quiz:[{q:"<code>../</code> signifie :",opts:["Racine","Meme dossier","Dossier parent","Externe"],correct:"c",
+      expl:"<code>..</code> = remonter d'un niveau."}]
+  },
+  {id:"w3-computer-code",code:"B12",level:"basic",title:"HTML Computer Code",sub:"code, kbd, samp, var, pre",tags:["code","basics"],
+    sections:[{h:"Tags pour code",blocks:[
+      {code:"<code>const x = 42;</code>          <!-- code inline -->\n<kbd>Ctrl</kbd>+<kbd>C</kbd>            <!-- touche clavier -->\n<samp>Hello World</samp>                <!-- sortie programme -->\n<var>x</var> = 5                        <!-- variable math -->\n\n<pre>\n  Texte preformate :\n  espaces  preserves\n     indentation aussi\n</pre>\n\n<pre><code>\nfunction hello() {\n  console.log('hi');\n}\n</code></pre>"}
+    ]}],
+    quiz:[{q:"Pour afficher une touche clavier :",opts:["<code>&lt;key&gt;</code>","<code>&lt;kbd&gt;</code>","<code>&lt;code&gt;</code>","<code>&lt;samp&gt;</code>"],correct:"b",
+      expl:"<code>kbd</code> = keyboard input."}]
+  },
+  {id:"w3-symbols",code:"B13",level:"basic",title:"HTML Symbols & Emojis",sub:"&copy;, &nbsp;, emojis",tags:["entities","symbols","basics"],
+    sections:[{h:"Entites communes",blocks:[
+      {table:[
+        ["Affiche","Entite","Nom"],
+        ["<code>&lt;</code>","<code>&amp;lt;</code>","Less than"],
+        ["<code>&gt;</code>","<code>&amp;gt;</code>","Greater than"],
+        ["<code>&amp;</code>","<code>&amp;amp;</code>","Ampersand"],
+        ["<code>&nbsp;</code>","<code>&amp;nbsp;</code>","Non-breaking space"],
+        ["<code>©</code>","<code>&amp;copy;</code>","Copyright"],
+        ["<code>®</code>","<code>&amp;reg;</code>","Registered"],
+        ["<code>™</code>","<code>&amp;trade;</code>","Trademark"],
+        ["<code>€</code>","<code>&amp;euro;</code>","Euro"],
+        ["<code>—</code>","<code>&amp;mdash;</code>","Em dash"]
+      ]},
+      {code:"<!-- Emojis : directement dans le HTML (UTF-8) -->\n<p>Hello 👋 World 🌍 !</p>\n\n<!-- Ou via code Unicode -->\n<p>&#128075; &#127757;</p>"},
+      {tip:"Avec charset UTF-8 (recommande), tu peux ecrire les emojis directement. Plus lisible."}
+    ]}],
+    quiz:[{q:"Espace insecable :",opts:["<code>&amp;sp;</code>","<code>&amp;nbsp;</code>","<code>&amp;space;</code>","<code>&amp;nbs;</code>"],correct:"b",
+      expl:"<code>&amp;nbsp;</code> = non-breaking space."}]
+  },
+  {id:"w3-layout",code:"I8",level:"intermediate",title:"HTML Layout",sub:"Structurer une page",tags:["layout","intermediate"],
+    sections:[{h:"Layout moderne",blocks:[
+      {p:"L'epoque des <code>&lt;table&gt;</code> pour la mise en page est revolue. En 2026 : CSS Flexbox/Grid sur du HTML semantique."},
+      {code:"<body>\n  <header>...</header>\n  <nav>...</nav>\n  <main>\n    <article>...</article>\n    <aside>...</aside>\n  </main>\n  <footer>...</footer>\n</body>\n\n<style>\nbody {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"nav nav\"\n    \"main aside\"\n    \"footer footer\";\n  grid-template-columns: 3fr 1fr;\n}\nheader { grid-area: header; }\nnav { grid-area: nav; }\nmain { grid-area: main; }\naside { grid-area: aside; }\nfooter { grid-area: footer; }\n</style>"}
+    ]}],
+    quiz:[{q:"Pour le layout en 2026 :",opts:["<code>&lt;table&gt;</code>","CSS Grid/Flexbox","frames","XHTML"],correct:"b",
+      expl:"HTML semantique + CSS Grid/Flexbox."}]
+  },
+  {id:"w3-responsive",code:"I9",level:"intermediate",title:"HTML Responsive",sub:"Viewport, picture, srcset",tags:["responsive","intermediate"],
+    sections:[{h:"Bases responsive HTML",blocks:[
+      {code:"<!-- 1. Viewport meta (OBLIGATOIRE) -->\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n<!-- 2. Images responsive -->\n<img\n  src=\"800.jpg\"\n  srcset=\"400.jpg 400w, 800.jpg 800w, 1600.jpg 1600w\"\n  sizes=\"(max-width: 600px) 400px, 800px\"\n  alt=\"...\">\n\n<!-- 3. Picture avec art direction -->\n<picture>\n  <source media=\"(max-width: 600px)\" srcset=\"mobile.jpg\">\n  <source media=\"(min-width: 601px)\" srcset=\"desktop.jpg\">\n  <img src=\"fallback.jpg\" alt=\"...\">\n</picture>"},
+      {tip:"Le CSS fait 90% du responsive (media queries). Mais HTML aide pour les images et la touch zone."}
+    ]}],
+    quiz:[{q:"Sans viewport meta :",opts:["Mobile zoomera","Plus rapide","Pas de difference","Erreur"],correct:"a",
+      expl:"Par defaut, mobile rend a 980px et zoome out."}]
+  },
+  {id:"w3-plugins",code:"I10",level:"intermediate",title:"HTML Plug-ins (embed, object)",sub:"Embed Flash-like content",tags:["embed","intermediate"],
+    sections:[{h:"embed et object",blocks:[
+      {code:"<!-- embed : contenu externe simple -->\n<embed src=\"file.pdf\" type=\"application/pdf\" width=\"600\" height=\"400\">\n\n<!-- object : avec fallback -->\n<object data=\"file.pdf\" type=\"application/pdf\" width=\"600\" height=\"400\">\n  <p>Ton navigateur ne supporte pas les PDFs.\n     <a href=\"file.pdf\">Telecharger</a></p>\n</object>"},
+      {note:"En 2026, on prefere des libs JS dediees (PDF.js etc.) plutot que les plug-ins natifs."}
+    ]}],
+    quiz:[{q:"Diff entre embed et object :",opts:["Aucune","object permet fallback","embed est moderne","object obsolete"],correct:"b",
+      expl:"<code>object</code> peut avoir du contenu de fallback."}]
+  },
+  {id:"w3-form-attrs",code:"I11",level:"intermediate",title:"HTML Form Attributes",sub:"autocomplete, novalidate, target",tags:["forms","attributes","intermediate"],
+    sections:[{h:"Attributs avances",blocks:[
+      {code:"<form\n  action=\"/submit\"\n  method=\"POST\"\n  autocomplete=\"on\"\n  novalidate\n  target=\"_blank\"\n  enctype=\"multipart/form-data\">\n  ...\n</form>\n\n<!-- Par input -->\n<input type=\"text\" autocomplete=\"name\">\n<input type=\"email\" autocomplete=\"email\">\n<input type=\"password\" autocomplete=\"new-password\">\n<input type=\"tel\" autocomplete=\"tel\">"},
+      {table:[
+        ["Attribut","Sens"],
+        ["<code>action</code>","URL de destination"],
+        ["<code>method</code>","GET ou POST"],
+        ["<code>enctype</code>","multipart/form-data pour fichiers"],
+        ["<code>novalidate</code>","Desactive validation HTML5"],
+        ["<code>autocomplete</code>","on / off / nom precis"],
+        ["<code>target</code>","_blank pour nouvel onglet"]
+      ]}
+    ]}],
+    quiz:[{q:"Pour uploader des fichiers :",opts:["method=\"upload\"","enctype=\"multipart/form-data\"","accept=\"file\"","type=\"upload\""],correct:"b",
+      expl:"Sans <code>enctype=\"multipart/form-data\"</code>, l'upload echoue."}]
+  },
+  {id:"w3-canvas",code:"A5",level:"advanced",title:"HTML Canvas",sub:"Dessin programmatique",tags:["canvas","graphics","advanced"],
+    sections:[{h:"Canvas 2D",blocks:[
+      {code:"<canvas id=\"c\" width=\"400\" height=\"300\"></canvas>\n\n<script>\nconst ctx = document.getElementById('c').getContext('2d');\nctx.fillStyle = '#6366f1';\nctx.fillRect(10, 10, 100, 100);\n\nctx.strokeStyle = 'red';\nctx.beginPath();\nctx.arc(200, 100, 40, 0, Math.PI * 2);\nctx.stroke();\n\nctx.font = '20px Inter';\nctx.fillText('Hello', 50, 200);\n</script>"},
+      {tip:"Canvas = pixels (raster). SVG = vecteur. Canvas pour les jeux/animations, SVG pour les icones/diagrammes."}
+    ]}],
+    quiz:[{q:"Canvas vs SVG :",opts:["Identique","Canvas raster, SVG vecteur","Inverse","SVG plus rapide"],correct:"b",
+      expl:"Canvas dessine des pixels. SVG decrit des formes vectorielles."}]
+  },
+  {id:"w3-storage",code:"A6",level:"advanced",title:"HTML Web Storage",sub:"localStorage, sessionStorage",tags:["storage","advanced"],
+    sections:[{h:"Stockage cote client",blocks:[
+      {code:"// Persistant (jusqu'a effacement manuel)\nlocalStorage.setItem('theme', 'dark');\nconst theme = localStorage.getItem('theme');\nlocalStorage.removeItem('theme');\nlocalStorage.clear();\n\n// Que pour la session (ferme onglet = vide)\nsessionStorage.setItem('search', 'php');\n\n// Stocker un objet (toujours en JSON)\nlocalStorage.setItem('user', JSON.stringify(user));\nconst user = JSON.parse(localStorage.getItem('user') || '{}');"},
+      {warn:"localStorage = ~5MB max. Pas de chiffrement. Jamais y mettre de mot de passe / token JWT sensible."}
+    ]}],
+    quiz:[{q:"localStorage survit :",opts:["A la session","Au reload mais pas a la fermeture","Tant qu'on ne clear pas","Une heure"],correct:"c",
+      expl:"localStorage persiste jusqu'a effacement explicite."}]
+  },
+  {id:"w3-drag",code:"A7",level:"advanced",title:"HTML Drag & Drop",sub:"draggable, dragstart, drop",tags:["drag","interaction","advanced"],
+    sections:[{h:"Drag & drop natif",blocks:[
+      {code:"<div draggable=\"true\" id=\"item\">Glisse-moi</div>\n<div id=\"zone\">Depose ici</div>\n\n<script>\nconst item = document.getElementById('item');\nconst zone = document.getElementById('zone');\n\nitem.addEventListener('dragstart', (e) => {\n  e.dataTransfer.setData('text/plain', 'item');\n});\n\nzone.addEventListener('dragover', (e) => {\n  e.preventDefault();  // OBLIGATOIRE pour autoriser drop\n});\n\nzone.addEventListener('drop', (e) => {\n  e.preventDefault();\n  const data = e.dataTransfer.getData('text/plain');\n  zone.textContent = 'Recu : ' + data;\n});\n</script>"}
+    ]}],
+    quiz:[{q:"Pour autoriser le drop :",opts:["allowdrop=\"true\"","dragover + preventDefault","drop-zone","Rien"],correct:"b",
+      expl:"<code>dragover</code> doit appeler <code>e.preventDefault()</code>."}]
   }
 ];
 
